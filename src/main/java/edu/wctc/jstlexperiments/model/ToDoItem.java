@@ -13,6 +13,11 @@ public class ToDoItem {
     private String name;
     private boolean completed;
 
+    public ToDoItem(String name) {
+        this.name = name;
+    }
+
+    
     
     public String getName() {
         return name;

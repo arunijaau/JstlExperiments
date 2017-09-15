@@ -20,14 +20,14 @@
         <form name="toDoForm" id="toDoForm" method="POST" action="ToDoController">
             Enter item for To-Do list: <input type="text" value="" name="toDoItem">
             <br>
-            <input type="submit" name= "add" value="add"> 
+            <input type="submit" name= "add" id="add" value="Add"> 
         </form>
 
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Item</th>
-                    <th>Completed</th>
+                    <th>Completion Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,11 +38,9 @@
                     </tr>
                 </c:forEach>
 
-
             </tbody>
 
         </table>
-
 
     </body>
 </html>

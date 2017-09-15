@@ -6,6 +6,7 @@
 package edu.wctc.jstlexperiments.controller;
 
 import edu.wctc.jstlexperiments.model.ToDoItem;
+import edu.wctc.jstlexperiments.model.ToDoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -21,15 +22,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Aruni
  */
-
-
-
-
 @WebServlet(name = "ToDoController", urlPatterns = {"/ToDoController"})
 public class ToDoController extends HttpServlet {
 
     private static final String HOME_PAGE = "/index.jsp";
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,25 +39,21 @@ public class ToDoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String destination = HOME_PAGE;
-        
-        
+
         try {
-            
-            List<ToDoItem> list = new ArrayList<>();
-            ToDoItem t1 = new ToDoItem();
-           
+            String itemName = request.getParameter("toDoItem");
+            ToDoService toDoService = new ToDoService();
+            List<ToDoItem> all = toDoService.getAllItems();
+            request.setAttribute("toDoList", all);
             
 
-            
-     
         } catch (Exception e) {
             request.setAttribute("errMsg", e.getMessage());
 //               destination = "/error.jsp";
         }
-        
-        
+
         RequestDispatcher view = request.getRequestDispatcher(destination);
         view.forward(request, response);
     }
